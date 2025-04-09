@@ -1,5 +1,19 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
+import { Sue_Ellen_Francisco } from "next/font/google";
+
+
+const titlePageFont = localFont({
+  src: "./fonts/VCR_OSD_MONO_1.001.ttf",
+  variable: "--font-title",
+});
+
+const sueEllenFrancisco = Sue_Ellen_Francisco({
+  variable: "--font-sue-ellen-francisco",
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +33,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${titlePageFont.variable} ${sueEllenFrancisco.variable}`}>
         {children}
       </body>
     </html>
