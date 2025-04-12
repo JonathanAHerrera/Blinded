@@ -3,7 +3,7 @@ export default function askPoolBoy() {
       <div style={{
         backgroundImage: 'url("askPoolBoy.jpeg")',
         //backgroundSize: 'cover',
-        backgroundSize: '50%', // try 90%, 85%, etc. for more zoom out
+        backgroundSize: '60%', // try 90%, 85%, etc. for more zoom out
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'black',
