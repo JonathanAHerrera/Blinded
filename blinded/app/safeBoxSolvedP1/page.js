@@ -9,7 +9,6 @@ export default function WhiteCard() {
         height: '100vh',
         width: '100vw',
       }}>
-        {/* You can add content here later */}
       </div>
     );
   }

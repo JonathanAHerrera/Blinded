@@ -6,11 +6,9 @@ export default function LedgerZoomedP2() {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'black',
-        //borderRadius: '20px',
         height: '100vh',
         width: '100vw',
       }}>
-        {/* You can add content here later */}
       </div>
     );
   }
