@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 
 export default function SafeBox() {
   const [numberString, setNumberString] = useState("");
+  const [message, setMessage] = useState("");
   const router = useRouter();
 
   const handleClick = (num) => {
@@ -16,13 +16,25 @@ export default function SafeBox() {
 
   const handleBackspace = () => {
     setNumberString((prev) => prev.slice(0, -1));
+    setMessage("");
   };
 
-  useEffect(() => {
+  const handleEnter = () => {
+    if (numberString.length < 4) return;
+
     if (numberString === "1286") {
-      router.push("/safeBoxSolvedP1");
+      setMessage("Pass");
+      setTimeout(() => {
+        router.push("/safeBoxSolvedP1");
+      }, 1000);
+    } else {
+      setMessage("Fail");
+      setTimeout(() => {
+        setMessage("");
+        setNumberString("");
+      }, 1000);
     }
-  }, [numberString, router]);
+  };
 
   return (
     <div
@@ -38,28 +50,61 @@ export default function SafeBox() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        position: "relative",
       }}
     >
 
+    <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "min(50vw, 300px)", // Responsive size
+        }}
+    >
+
+      {/* Message Box */}
+      {message && (
+        <div
+          style={{
+            position: "absolute",
+            top: "20%",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            padding: "10px 20px",
+            border: "2px solid white",
+            borderRadius: "8px",
+            color: message === "Pass" ? "lime" : "red",
+            fontSize: "18px",
+            fontWeight: "bold",
+            width: "20%",
+            textAlign: "center",
+            marginBottom: "10px"
+          }}
+        >
+          {message}
+        </div>
+      )}
+
+      {/* Keypad */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 20px)",
           gap: "6px",
           marginBottom: "39px",
-          marginLeft: "179px"
+          marginLeft: "179px",
         }}
       >
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-          <button
-            key={num}
-            onClick={() => handleClick(num)}
-            style={buttonStyle}
-          >
+          <button key={num} onClick={() => handleClick(num)} style={buttonStyle}>
             {num}
           </button>
         ))}
-        <div /> 
+        <button onClick={handleEnter} disabled={numberString.length !== 4} style={{...buttonStyle, opacity: numberString.length === 4 ? 1 : 0.4,
+            transition: "opacity 0.3s"}}>
+          E
+        </button>          
         <button onClick={() => handleClick(0)} style={buttonStyle}>
           0
         </button>
@@ -68,13 +113,7 @@ export default function SafeBox() {
         </button>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "10px",
-          marginTop: "10px"
-        }}
-      >
+      <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
         {[0, 1, 2, 3].map((i) => (
           <div
             key={i}
@@ -94,6 +133,7 @@ export default function SafeBox() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

@@ -30,10 +30,10 @@ export default function VictimsRoom() {
         onClick={handleSafeBoxClick}
         style={{
           position: "absolute",
-          top: "51%",
+          top: "52%",
           left: "36%",
-          width: "30px",
-          height: "30px",
+          width: "60px",
+          height: "35px",
           borderRadius: "50%",
           backgroundColor: "rgba(255, 255, 0, 0.05)",
           boxShadow: "0 0 0 transparent",
@@ -56,7 +56,7 @@ export default function VictimsRoom() {
           position: "absolute",
           top: "80%",
           left: "63%",
-          width: "120px",
+          width: "150px",
           height: "60px",
           borderRadius: "50%",
           backgroundColor: "rgba(255, 255, 0, 0.05)",
