@@ -1,4 +1,10 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function CrimeScene() {
+    const router = useRouter();
+
     return (
       <div style={{
         backgroundImage: 'url("crimeScene.jpg")',
@@ -9,6 +15,24 @@ export default function CrimeScene() {
         height: '100vh',
         width: '100vw',
       }}>
+   
+      <button
+        onClick={() => router.push("/askPoolBoy")}
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          right: "20px",
+          background: "none",
+          border: "none",
+          fontSize: "2rem",
+          color: "white",
+          cursor: "pointer",
+        }}
+        aria-label="Next"
+      >
+        ➤
+      </button>
+
       </div>
     );
   }
