@@ -16,7 +16,7 @@ export default function LedgerZoomedP2() {
     <svg width="100%" height="100%" viewBox="0 0 100 100"><polygon points="50,10 61,35 90,35 66,55 76,85 50,65 24,85 34,55 10,35 39,35" stroke="black" strokeWidth="5" fill="none" /></svg>, // Star
   ];
 
-  const correctCombo = [2, 3, 0]; // Triangle, Pentagon, Square
+  const correctCombo = [4, 3, 0]; // Star, Pentagon, Square
 
   const handleClick = (index) => {
     setDigits((prev) =>
@@ -29,14 +29,14 @@ export default function LedgerZoomedP2() {
     if (isMatch) {
       setButtonGlow("green");
       setTimeout(() => {
-        router.push("/suspect1Room");
-      }, 500);
+        router.push("/openLedgerBoxP2");
+      }, 1000);
     } else {
       setButtonGlow("red");
       setTimeout(() => {
         setDigits([0, 0, 0]);
         setButtonGlow(null);
-      }, 500);
+      }, 1000);
     }
   };
 
