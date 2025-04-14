@@ -189,6 +189,11 @@ export default function FinalScene() {
       bg: 'noRemorse',
     },
     {
+      speaker: 'poolboy',
+      text: "I don't regret a thing.",
+      bg: 'noRemorse',
+    },
+    {
       speaker: 'officer',
       text: '(Handcuffs click softly)',
       isFx: true,
@@ -277,7 +282,7 @@ export default function FinalScene() {
         setIsTransitioning(false);
 
         if (nextLine.bg === 'end') {
-          setTimeout(() => router.push('/endMessage'), 1200); 
+          setTimeout(() => router.push('/endMessage')); 
         }
 
       }, nextLine.bg === 'flashbackCade' ? 1600 : 800);

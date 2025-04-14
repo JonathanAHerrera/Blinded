@@ -5,15 +5,9 @@ import { useEffect, useState } from 'react';
 
 export default function EndMessage() {
   const router = useRouter();
-  const [fadeIn, setFadeIn] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setFadeIn(true), 300);
-    return () => clearTimeout(timeout);
-  }, []);
 
   return (
-    <div className={`end-scene ${fadeIn ? 'fade-in' : ''}`}>
+    <div className={`end-scene`}>
       <button
         className="replay-btn"
         onClick={() => router.push('/crimeScene')}
