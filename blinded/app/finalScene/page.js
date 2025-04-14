@@ -133,6 +133,7 @@ export default function FinalScene() {
   const [initialZoom, setInitialZoom] = useState(true);
   const [zoomLocked, setZoomLocked] = useState(false);
   const [isFirstLine, setIsFirstLine] = useState(true);
+  const [isBouncing, setIsBouncing] = useState(false);
 
   const currentLine = dialogue[lineIndex];
 
@@ -154,7 +155,9 @@ export default function FinalScene() {
       setBgStage(nextBg);
 
       if (nextLine.triggersAngry) {
+        setIsBouncing(true);
         setAnimClass('lashOut');
+        setTimeout(() => setIsBouncing(false), 500);
       } else if (nextLine.triggersArrest) {
         setAnimClass('zoomIn');
       } else if (nextBg === 'dnaResult') {
@@ -179,7 +182,7 @@ export default function FinalScene() {
     document.body.style.margin = '0';
     setTimeout(() => {
       setInitialZoom(false);
-      setZoomLocked(true); // ← lock in the zoom
+      setZoomLocked(true);
       setShowText(true);
       setIsTransitioning(false);
     }, 3000);
@@ -205,7 +208,13 @@ export default function FinalScene() {
     <div className="scene" onClick={handleClick}>
       <div
         className={`background ${
-          initialZoom ? 'initialZoom' : zoomLocked ? 'zoomLocked' : animClass
+          initialZoom
+            ? 'initialZoom'
+            : isBouncing
+            ? 'lashOut'
+            : zoomLocked
+            ? 'zoomLocked'
+            : animClass
         }`}
         style={{ backgroundImage: `url("${getImage()}")` }}
       />
@@ -252,18 +261,18 @@ export default function FinalScene() {
           will-change: transform, opacity, filter;
         }
 
-        .zoomLocked {
-          transform: scale(1.03);
-          opacity: 1;
-          filter: blur(0);
-        }
-
         @keyframes zoomIntro {
           to {
             transform: scale(1.03);
             opacity: 1;
             filter: blur(0);
           }
+        }
+
+        .zoomLocked {
+          transform: scale(1.03);
+          opacity: 1;
+          filter: blur(0);
         }
 
         .fadeIn {
@@ -298,19 +307,19 @@ export default function FinalScene() {
 
         @keyframes lashOut {
           0% {
-            transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1.03);
           }
           20% {
-            transform: translate(-5px, 2px) scale(1.03);
+            transform: translate(-5px, 2px) scale(1.05);
           }
           40% {
-            transform: translate(5px, -2px) scale(1.05);
+            transform: translate(5px, -2px) scale(1.07);
           }
           60% {
-            transform: translate(-3px, 2px) scale(1.02);
+            transform: translate(-3px, 2px) scale(1.04);
           }
           80% {
-            transform: translate(2px, -1px) scale(1.01);
+            transform: translate(2px, -1px) scale(1.03);
           }
           100% {
             transform: translate(0, 0) scale(1.03);
@@ -328,11 +337,7 @@ export default function FinalScene() {
           left: 0;
           height: 100%;
           width: 100%;
-          background: radial-gradient(
-            circle at center,
-            rgba(0, 0, 0, 0.1) 0%,
-            rgba(0, 0, 0, 0.7) 80%
-          );
+          background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 80%);
           pointer-events: none;
           z-index: 1;
         }
