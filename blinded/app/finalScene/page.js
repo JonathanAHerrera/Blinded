@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from "next/navigation";
 
 export default function FinalScene() {
   const dialogue = [
@@ -11,7 +12,6 @@ export default function FinalScene() {
     { speaker: 'detective', text: "You killed him didn't you?", bg: 'calm' },
     {speaker: 'poolboy', text: '……', bg: 'calm' },
     { speaker: 'detective', text: 'I know why you did it.', bg: 'calm' },
-    { speaker: 'poolboy', text: '……', bg: 'calm' },
     {
       speaker: 'detective',
       text: 'Your mother... overdosed on that same drug. The one we found in Cade.',
@@ -20,7 +20,7 @@ export default function FinalScene() {
     { speaker: 'poolboy', text: '…You don’t know anything about her.', bg: 'calm' },
     {
       speaker: 'detective',
-      text: 'Your mother. She died alone. Cade left her — and you.',
+      text: 'She died alone. Cade left her — and you.',
       bg: 'calm',
     },
     {
@@ -35,7 +35,12 @@ export default function FinalScene() {
     },
     {
       speaker: 'detective',
-      text: 'He never even knew you existed.',
+      text: "It doesn't?",
+      bg: 'calm',
+    },
+    {
+      speaker: 'detective',
+      text: 'He never even knew who you were.',
       bg: 'calm',
     },
     {
@@ -49,29 +54,81 @@ export default function FinalScene() {
       bg: 'calm',
     },
     { speaker: 'poolboy', text: '........', bg: 'calm' },
+    { speaker: 'poolboy', text: 'You could never understand how that felt.', bg: 'calm' },
+    { speaker: 'poolboy', text: 'To witness someone be alive but live as though they were dead.', bg: 'calm' },
+    { speaker: 'poolboy', text: 'After all these years that I had to live in that misery.', bg: 'calm' },
+    { speaker: 'poolboy', text: 'I saw him there...', bg: 'calm' },
     {
       speaker: 'poolboy',
-      text: '...He was laughing. Drinking. Like nothing mattered.',
-      bg: 'calm',
+      text: '...laughing. Drinking. Like nothing mattered.',
+      bg: 'flashbackCade',
+      isFlashback: true
+    }, 
+    {
+      speaker: 'poolboy',
+      text: 'He was wrapped head to toe in luxury smiling like a con man.',
+      bg: 'flashbackCade',
+      isFlashback: true
+    }, 
+    {
+      speaker: 'poolboy',
+      text: 'In that moment I wanted nothing more than to wipe that stupid grin off his face.',
+      bg: 'flashbackCade',
+      isFlashback: true
+    },  
+    {
+      speaker: 'poolboy',
+      text: 'He stepped away for a moment to remove his suit jacket.',
+      bg: 'flashbackCade',
+    },
+    {
+      speaker: 'poolboy',
+      text: 'That was my opening.',
+      bg: 'flashbackCade',
     },
     {
       speaker: 'poolboy',
       text: 'So I waited until no one was watching...',
-      bg: 'calm',
+      bg: 'flashbackCade',
     },
     {
       speaker: 'poolboy',
       text: '...and I dropped the powder into his glass.',
-      bg: 'calm',
+      bg: 'dropPowder',
     },
     {
       speaker: 'poolboy',
       text: 'It was the same stuff that killed her.',
+      bg: 'dropPowder',
+    },
+    {
+      speaker: 'poolboy',
+      text: 'I watched him drink every.. last.. drop.',
+      bg: 'drinkPoison',
+    },
+    {
+      speaker: 'poolboy',
+      text: "It didn't take long to infiltrate his system.",
+      bg: 'drinkPoison',
+    },
+    {
+      speaker: 'poolboy',
+      text: "Later that night I watched the drug take his life.",
       bg: 'calm',
     },
     {
       speaker: 'poolboy',
-      text: 'I watched him drink every last drop.',
+      text: "He just so happened to end up in the pool. ",
+      bg: 'calm',
+    },
+    {
+      speaker: 'poolboy',
+      text: "It should've been my perfect chance to make it look like an accident. ",
+      bg: 'calm',
+    },
+    {
+      speaker: 'poolboy',
+      text: "But all you cops ever do is snoop your nose where it doesn't belong.",
       bg: 'calm',
     },
     {
@@ -93,7 +150,12 @@ export default function FinalScene() {
     },
     {
       speaker: 'poolboy',
-      text: 'I didn’t just kill him. I made sure he felt it.',
+      text: 'I didn’t just kill him. I made sure he suffered the same fate.',
+      bg: 'angry',
+    },
+    {
+      speaker: 'poolboy',
+      text: 'Dying alone with no one around!',
       bg: 'angry',
     },
     {
@@ -117,6 +179,16 @@ export default function FinalScene() {
       bg: 'angry',
     },
     {
+      speaker: 'poolboy',
+      text: 'I had a mission to fulfill.',
+      bg: 'noRemorse',
+    },
+    {
+      speaker: 'poolboy',
+      text: 'And I got what I wanted.',
+      bg: 'noRemorse',
+    },
+    {
       speaker: 'officer',
       text: '(Handcuffs click softly)',
       isFx: true,
@@ -125,11 +197,35 @@ export default function FinalScene() {
     },
     {
       speaker: 'detective',
-      text: 'He never even knew he had a son.',
+      text: 'He gave his father a death sentence. But the man was already living a lie.',
       isSoft: true,
       bg: 'arrest',
     },
+    {
+      speaker: 'partner',
+      text: 'Do you think he knew?',
+      isSoft: true,
+      bg: 'arrest',
+    },
+    {
+      speaker: 'detective',
+      text: 'The truth came too late. For both of them.',
+      isSoft: true,
+      bg: 'arrest',
+    },
+    {
+      speaker: 'detective',
+      text: 'Cade never even knew he had a son.',
+      isSoft: true,
+      bg: 'arrest',
+    },
+    {
+      speaker: '',
+      text: '',
+      bg: 'end',
+    },
   ];
+
 
   const [lineIndex, setLineIndex] = useState(0);
   const [bgStage, setBgStage] = useState(dialogue[0].bg);
@@ -140,11 +236,14 @@ export default function FinalScene() {
   const [zoomLocked, setZoomLocked] = useState(false);
   const [isFirstLine, setIsFirstLine] = useState(true);
   const [isBouncing, setIsBouncing] = useState(false);
+  const [showEndScreen, setShowEndScreen] = useState(false);
+
+  const router = useRouter();
 
   const currentLine = dialogue[lineIndex];
 
   const handleClick = () => {
-    if (isTransitioning) return;
+    if (isTransitioning || showEndScreen) return;
 
     const nextIndex = lineIndex + 1;
     const nextLine = dialogue[nextIndex];
@@ -176,7 +275,12 @@ export default function FinalScene() {
         setLineIndex(nextIndex);
         setShowText(true);
         setIsTransitioning(false);
-      }, 800);
+
+        if (nextLine.bg === 'end') {
+          setTimeout(() => router.push('/endMessage'), 1200); 
+        }
+
+      }, nextLine.bg === 'flashbackCade' ? 1600 : 800);
     } else {
       setLineIndex(nextIndex);
       setShowText(true);
@@ -199,14 +303,15 @@ export default function FinalScene() {
 
   const getImage = () => {
     switch (bgStage) {
-      case 'angry':
-        return '/interrogationAngryScene.jpg';
-      case 'arrest':
-        return '/arrestPoolBoy.jpeg';
-      case 'dnaResult':
-        return '/dnaResult.jpg';
-      default:
-        return '/interrogationScene.jpg';
+      case 'angry': return '/interrogationAngryScene.jpg';
+      case 'arrest': return '/arrestPoolBoy.jpg';
+      case 'dnaResult': return '/dnaResult.jpg';
+      case 'flashbackCade': return '/flashbackCade.jpg';
+      case 'dropPowder': return '/dropPowder.jpg';
+      case 'drinkPoison': return '/drinkPoison.jpg';
+      case 'noRemorse': return '/noRemorse.jpg';
+      case 'end': return '';
+      default: return '/interrogationScene.jpg';
     }
   };
 
@@ -214,7 +319,9 @@ export default function FinalScene() {
     <div className="scene" onClick={handleClick}>
       <div
         className={`background ${
-          initialZoom
+          bgStage === 'flashbackCade'
+            ? 'flashback'
+            : initialZoom
             ? 'initialZoom'
             : isBouncing
             ? 'lashOut'
@@ -224,8 +331,15 @@ export default function FinalScene() {
         }`}
         style={{ backgroundImage: `url("${getImage()}")` }}
       />
-      {bgStage === 'arrest' && <div className="arrest-overlay" />}
-      {showText && (
+
+      {bgStage === 'arrest' && (
+        <>
+          <div className="siren-flash" />
+          <div className="arrest-overlay" />
+        </>
+      )}
+
+      {showText && !showEndScreen && currentLine.speaker !== 'end' && (
         <div className={`dialogue ${isFirstLine ? 'dialogueIntro' : ''}`}>
           <p
             className={`${currentLine.speaker} ${currentLine.isYell ? 'yell' : ''} ${
@@ -263,8 +377,6 @@ export default function FinalScene() {
           transform: scale(1);
           opacity: 0;
           filter: blur(10px);
-          transform-origin: center;
-          will-change: transform, opacity, filter;
         }
 
         @keyframes zoomIntro {
@@ -312,40 +424,17 @@ export default function FinalScene() {
         }
 
         @keyframes lashOut {
-          0% {
-            transform: translate(0, 0) scale(1.03);
-          }
-          20% {
-            transform: translate(-5px, 2px) scale(1.05);
-          }
-          40% {
-            transform: translate(5px, -2px) scale(1.07);
-          }
-          60% {
-            transform: translate(-3px, 2px) scale(1.04);
-          }
-          80% {
-            transform: translate(2px, -1px) scale(1.03);
-          }
-          100% {
-            transform: translate(0, 0) scale(1.03);
-          }
+          0% { transform: translate(0, 0) scale(1.03); }
+          20% { transform: translate(-5px, 2px) scale(1.05); }
+          40% { transform: translate(5px, -2px) scale(1.07); }
+          60% { transform: translate(-3px, 2px) scale(1.04); }
+          80% { transform: translate(2px, -1px) scale(1.03); }
+          100% { transform: translate(0, 0) scale(1.03); }
         }
 
         .zoomIn {
           transform: scale(1.05);
           transition: transform 1.8s ease-in-out;
-        }
-
-        .arrest-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 80%);
-          pointer-events: none;
-          z-index: 1;
         }
 
         .dialogue {
@@ -373,13 +462,9 @@ export default function FinalScene() {
           }
         }
 
-        .detective {
-          color: #79a9f5;
-        }
-
-        .poolboy {
-          color: #f57b7b;
-        }
+        .detective { color: #79a9f5; }
+        .partner { color: rgb(128, 130, 133); }
+        .poolboy { color: #f57b7b; }
 
         .yell {
           font-weight: bold;
@@ -396,6 +481,32 @@ export default function FinalScene() {
           color: gray;
           text-align: center;
           font-size: 0.95rem;
+        }
+
+        .arrest-overlay {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          background: radial-gradient(circle at center, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .siren-flash {
+          animation: sirenFlash 1s ease-in-out 3;
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        @keyframes sirenFlash {
+          0% { background-color: rgba(0, 0, 255, 0.2); }
+          25% { background-color: rgba(255, 0, 0, 0.2); }
+          50% { background-color: rgba(0, 0, 255, 0.3); }
+          75% { background-color: rgba(255, 0, 0, 0.3); }
+          100% { background-color: transparent; }
         }
       `}</style>
     </div>
