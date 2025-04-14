@@ -3,35 +3,41 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 export default function LedgerZoomedP2() {
   const [digits, setDigits] = useState([0, 0, 0]);
-  const [buttonGlow, setButtonGlow] = useState(null); // Track button glow state
+  const [buttonGlow, setButtonGlow] = useState(null);
   const router = useRouter();
 
-  const handleButtonPress = () => {
-    const inputDigits = digits.join(""); // Combine digits into a string
+  const shapeComponents = [
+    <svg width="100%" height="100%" viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" stroke="black" strokeWidth="5" fill="none" /></svg>, // Square
+    <svg width="100%" height="100%" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" stroke="black" strokeWidth="5" fill="none" /></svg>, // Circle
+    <svg width="100%" height="100%" viewBox="0 0 100 100"><polygon points="50,15 90,85 10,85" stroke="black" strokeWidth="5" fill="none" /></svg>, // Triangle
+    <svg width="100%" height="100%" viewBox="0 0 100 100"><polygon points="50,10 70,40 60,80 40,80 30,40" stroke="black" strokeWidth="5" fill="none" /></svg>, // Pentagon
+    <svg width="100%" height="100%" viewBox="0 0 100 100"><polygon points="50,10 61,35 90,35 66,55 76,85 50,65 24,85 34,55 10,35 39,35" stroke="black" strokeWidth="5" fill="none" /></svg>, // Star
+  ];
 
-    if (inputDigits === "354") {
-      // If the digits match, glow green and reroute
-      setButtonGlow("green");
-      setTimeout(() => {
-        router.push("/nextPage"); // Navigate to the next page
-      }, 500); // Wait 0.5 seconds before rerouting
-    } else {
-      // If the digits don't match, glow red and reset digits
-      setButtonGlow("red");
-      setTimeout(() => {
-        setDigits([0, 0, 0]); // Reset digits to 0, 0, 0
-        setButtonGlow(null); // Reset button glow
-      }, 500); // Wait 0.5 seconds before resetting
-    }
-  };
+  const correctCombo = [2, 3, 0]; // Triangle, Pentagon, Square
 
   const handleClick = (index) => {
     setDigits((prev) =>
-      prev.map((d, i) => (i === index ? (d + 1) % 10 : d))
+      prev.map((val, i) => (i === index ? (val + 1) % shapeComponents.length : val))
     );
+  };
+
+  const handleButtonPress = () => {
+    const isMatch = digits.every((val, i) => val === correctCombo[i]);
+    if (isMatch) {
+      setButtonGlow("green");
+      setTimeout(() => {
+        router.push("/suspect1Room");
+      }, 500);
+    } else {
+      setButtonGlow("red");
+      setTimeout(() => {
+        setDigits([0, 0, 0]);
+        setButtonGlow(null);
+      }, 500);
+    }
   };
 
   return (
@@ -48,29 +54,17 @@ export default function LedgerZoomedP2() {
       }}
     >
       <div style={styles.container}>
-        {digits.map((digit, index) => (
+        {digits.map((shapeIndex, index) => (
           <div
             key={index}
             style={styles.dialContainer}
             onClick={() => handleClick(index)}
           >
-            <div
-              style={{
-                ...styles.dial,
-                transform: `translateY(-${digit * 2.5}vw)`,
-              }}
-            >
-              {[...Array(10).keys()].map((num, i) => (
-                <div key={i} style={styles.number}>
-                  {num}
-                </div>
-              ))}
-            </div>
+            {shapeComponents[shapeIndex]}
           </div>
         ))}
       </div>
 
-      {/* The enter button */}
       <div
         onClick={handleButtonPress}
         style={{
@@ -78,8 +72,26 @@ export default function LedgerZoomedP2() {
           ...(buttonGlow === "green" && styles.greenGlow),
           ...(buttonGlow === "red" && styles.redGlow),
         }}
+      ></div>
+
+      <button
+        onClick={() => router.push("/suspect1Room")}
+        style={{
+          position: "fixed",
+          bottom: "3vh",
+          left: "10vh",
+          background: "none",
+          border: "none",
+          fontSize: "3vw",
+          color: "white",
+          cursor: "pointer",
+          transform: "rotate(180deg)"
+        }}
+        aria-label="Back"
       >
-      </div>
+        ➤
+      </button>
+
     </div>
   );
 }
@@ -88,42 +100,33 @@ const styles = {
   container: {
     display: "flex",
     justifyContent: "center",
-    gap: "2.3vw",
+    gap: "2vw",
     position: "absolute",
     top: "49.5vh",
-    left: "45.5vw",
+    left: "45.4vw",
     transform: "translate(-50%, -50%)",
   },
   dialContainer: {
-    width: "3vw",
-    height: "3vw",
+    width: "3.2vw",
+    height: "3.2vw",
     overflow: "hidden",
     border: "2px solid #aaa",
     borderRadius: "0.3vw",
-    background: "radial-gradient(circle at top left, #e0e0e0, #a9a9a9)",
+    backgroundColor: "grey",
     boxShadow: "inset 0 0 10px #ccc, 0 0 8px rgba(255,255,255,0.3)",
     cursor: "pointer",
-  },
-  dial: {
-    transition: "transform 0.3s ease-in-out",
-  },
-  number: {
-    height: "2.5vw",
-    color: "#222",
-    fontSize: "2vw",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: "monospace",
   },
   button: {
     position: "absolute",
-    top: "45vh",
-    left: "65.1vw",
+    top: "42.9vh",
+    left: "65.2vw",
     transform: "translateX(-50%)",
     width: "6.5vw",
     height: "6.5vw",
-    backgroundColor: "black",//"#333",
+    backgroundColor: "black",
     color: "#fff",
     fontSize: "2vw",
     fontFamily: "monospace",
