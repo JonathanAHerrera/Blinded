@@ -61,7 +61,7 @@ export default function SafeBox() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          width: "min(50vw, 300px)", // Responsive size
+          width: "min(50vw, 300px)", 
         }}
     >
 
