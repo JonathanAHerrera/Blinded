@@ -1,10 +1,10 @@
-'use client'; 
+'use client';
 
 import { useEffect } from 'react';
 
 export default function InterrogatePoolBoy() {
   useEffect(() => {
-    document.body.style.margin = '0'; 
+    document.body.style.margin = '0';
     return () => {
       document.body.style.margin = '';
     };
@@ -18,19 +18,28 @@ export default function InterrogatePoolBoy() {
           height: 100vh;
           width: 100vw;
           background-image: url("/interrogationScene.jpg"); 
-          background-size: 90%;
+          background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
           background-color: black;
-          animation: zoomEffect 10s ease-in-out forwards;
+
+          opacity: 0;
+          filter: blur(10px);
+          animation: revealScene 2s ease-out forwards;
         }
 
-        @keyframes zoomEffect {
+        @keyframes revealScene {
           0% {
-            background-size: 90%;
+            opacity: 0;
+            filter: blur(10px);
+          }
+          50% {
+            opacity: 0.5;
+            filter: blur(5px);
           }
           100% {
-            background-size: 100%;
+            opacity: 1;
+            filter: blur(0);
           }
         }
       `}</style>
