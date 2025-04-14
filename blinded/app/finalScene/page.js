@@ -56,7 +56,9 @@ export default function FinalScene() {
     { speaker: 'poolboy', text: '........', bg: 'calm' },
     { speaker: 'poolboy', text: 'You could never understand how that felt.', bg: 'calm' },
     { speaker: 'poolboy', text: 'To witness someone be alive but live as though they were dead.', bg: 'calm' },
-    { speaker: 'poolboy', text: 'After all these years that I had to live in that misery.', bg: 'calm' },
+    { speaker: 'poolboy', text: 'She was a mess when he left.', bg: 'calm' },
+    { speaker: 'poolboy', text: "She suffered all the way up until she ruined her life.", bg: 'calm' },
+    { speaker: 'poolboy', text: 'After all these years that I had to live in that misery and guilt...', bg: 'calm' },
     { speaker: 'poolboy', text: 'I saw him there...', bg: 'calm' },
     {
       speaker: 'poolboy',
