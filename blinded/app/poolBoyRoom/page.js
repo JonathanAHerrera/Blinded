@@ -2,11 +2,11 @@
 
 import { useRouter } from "next/navigation";
 
-export default function talkToSuspect1() {
+export default function poolBoyRoom() {
     const router = useRouter();
     return (
       <div style={{
-        backgroundImage: 'url("talkingSuspectOne.jpeg")',
+        backgroundImage: 'url("poolBoyRoom.jpg")',
         backgroundSize: '55%',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -15,8 +15,8 @@ export default function talkToSuspect1() {
         width: '100vw',
       }}>
     
-      <button
-        onClick={() => router.push("/redHairSecurityFootage")}
+      {/* <button
+        onClick={() => router.push("/askRichardTheBoyfriend")}
         style={{
           position: "absolute",
           bottom: "20px",
@@ -30,7 +30,7 @@ export default function talkToSuspect1() {
         aria-label="Next"
       >
         ➤
-      </button>
+      </button> */}
 
       </div>
     );
