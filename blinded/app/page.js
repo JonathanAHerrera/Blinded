@@ -1,9 +1,19 @@
 "use client"
 import Image from "next/image";
 import styles from "./page.module.css";
+
+import { useRouter } from "next/navigation";
+
+
 import { useState } from "react";
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleStartClick = () => {
+    router.push("/crimeScene");
+  };
+
   const [ audio, setAudio ] = useState( true )
 
   return (
@@ -17,7 +27,7 @@ export default function Home() {
             
             }
           </button>
-          <button style={{ borderRadius: "10px", backgroundColor: "white", color: "black", border: "2px white solid", flex: "1", height: "100%", fontFamily: "var(--font-sue-ellen-francisco)", fontSize:"40px"}}>
+          <button onClick={handleStartClick} style={{ borderRadius: "10px", backgroundColor: "white", color: "black", border: "2px white solid", flex: "1", height: "100%", fontFamily: "var(--font-sue-ellen-francisco)", fontSize:"40px", cursor: "pointer"}}>
             Start
           </button>
           <button style={{ borderRadius: "10px", backgroundColor: "transparent", color: "white", border: "2px white solid", flex: "1", height: "100%", fontFamily: "var(--font-sue-ellen-francisco)", fontSize:"40px"}}>
