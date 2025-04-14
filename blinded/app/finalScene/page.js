@@ -4,6 +4,12 @@ import { useState, useEffect } from 'react';
 
 export default function FinalScene() {
   const dialogue = [
+    { speaker: 'detective', text: 'So...', bg: 'calm' },
+    { speaker: 'detective', text: 'Do you want to tell me what happened?', bg: 'calm' },
+    {speaker: 'poolboy', text: '……', bg: 'calm' },
+    { speaker: 'detective', text: '……', bg: 'calm' },
+    { speaker: 'detective', text: "You killed him didn't you?", bg: 'calm' },
+    {speaker: 'poolboy', text: '……', bg: 'calm' },
     { speaker: 'detective', text: 'I know why you did it.', bg: 'calm' },
     { speaker: 'poolboy', text: '……', bg: 'calm' },
     {
