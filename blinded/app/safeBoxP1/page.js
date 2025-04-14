@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+
 export default function SafeBox() {
   const [numberString, setNumberString] = useState("");
   const [message, setMessage] = useState("");
@@ -134,6 +135,23 @@ export default function SafeBox() {
         ))}
       </div>
     </div>
+    <button
+        onClick={() => router.push("/victimsRoom")}
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "60px",
+          background: "none",
+          border: "none",
+          fontSize: "2rem",
+          color: "white",
+          cursor: "pointer",
+          transform: "rotate(180deg)"
+        }}
+        aria-label="Next"
+      >
+        ➤
+      </button>
     </div>
   );
 }
