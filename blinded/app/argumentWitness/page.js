@@ -2,11 +2,11 @@
 
 import { useRouter } from "next/navigation";
 
-export default function talkToSuspect1() {
+export default function ArgumentWitness() {
     const router = useRouter();
     return (
       <div style={{
-        backgroundImage: 'url("talkingSuspectOne.jpeg")',
+        backgroundImage: 'url("argumentWitness.png")',
         backgroundSize: '55%',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -16,7 +16,7 @@ export default function talkToSuspect1() {
       }}>
     
       <button
-        onClick={() => router.push("/redHairSecurityFootage")}
+        onClick={() => router.push("/poolBoyRoom")}
         style={{
           position: "absolute",
           bottom: "20px",
