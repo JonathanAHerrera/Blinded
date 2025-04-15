@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from "next/navigation";
+
 
 export default function ChessBoard() {
   const [activeSpot, setActiveSpot] = useState(null);
+  const router = useRouter();
 
   const positions = [
     { id: 1, top: '32%', left: '43.5%' }, //C3
@@ -85,6 +88,25 @@ export default function ChessBoard() {
           </div>
         ))}
       </div>
+
+      <button
+        onClick={() => router.push("/victimsRoom")}
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "60px",
+          background: "none",
+          border: "none",
+          fontSize: "2rem",
+          color: "white",
+          cursor: "pointer",
+          transform: "rotate(180deg)"
+        }}
+        aria-label="Next"
+      >
+        ➤
+      </button>
+
     </div>
   );
 }

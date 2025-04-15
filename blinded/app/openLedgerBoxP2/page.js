@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-export default function LedgerBoxP2() {
+export default function openLedgerBoxP2() {
     const router = useRouter();
 
     return (
@@ -23,7 +23,7 @@ export default function LedgerBoxP2() {
         }}
       >
         <img
-          src="ledgerBoxP2.jpeg"
+          src="openLedgerBox.jpeg"
           alt="ledgerBox"
           style={{
             width: "100%",
@@ -31,10 +31,10 @@ export default function LedgerBoxP2() {
             display: "block",
           }}
         />
-      
-      <button
-        onClick={() => router.push("/ledgerZoomedP2")}
-        style={{
+
+      <button   
+        onClick={() => router.push("/ledgerP2")}
+        style={{  
           position: "absolute",
           top: "39%",
           left: "30%",
@@ -49,6 +49,7 @@ export default function LedgerBoxP2() {
           justifyContent: "center",
         }}
       />
+
 
       <button
         onClick={() => router.push("/suspect1Room")}

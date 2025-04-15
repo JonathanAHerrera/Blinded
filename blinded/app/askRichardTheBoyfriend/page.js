@@ -2,37 +2,35 @@
 
 import { useRouter } from "next/navigation";
 
-export default function WhiteCard() {
+export default function AskRichardTheBoyfriend() {
     const router = useRouter();
-
     return (
       <div style={{
-        backgroundImage: 'url("whiteCardP1.jpg")',
-        backgroundSize: 'contain',
-        backgroundPosition: 'center',
+        backgroundImage: 'url("askRichardTheBoyfriend.jpeg")',
+        backgroundSize: '55%',
         backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
         backgroundColor: 'black',
         height: '100vh',
         width: '100vw',
       }}>
-
+    
       <button
-        onClick={() => router.push("/phoneNumber")}
+        onClick={() => router.push("/argumentWitness")}
         style={{
           position: "absolute",
           bottom: "20px",
-          right: "20px",
+          right: "60px",
           background: "none",
           border: "none",
           fontSize: "2rem",
           color: "white",
-          cursor: "pointer",
+          cursor: "pointer"
         }}
         aria-label="Next"
       >
         ➤
       </button>
-
 
       </div>
     );

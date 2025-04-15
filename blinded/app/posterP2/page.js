@@ -1,14 +1,13 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 
-export default function WhiteCard() {
+export default function posterP2() {
     const router = useRouter();
-
+    
     return (
       <div style={{
-        backgroundImage: 'url("whiteCardP1.jpg")',
-        backgroundSize: 'contain',
+        backgroundImage: 'url("poster.png")',
+        backgroundSize: '50%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'black',
@@ -16,23 +15,23 @@ export default function WhiteCard() {
         width: '100vw',
       }}>
 
-      <button
-        onClick={() => router.push("/phoneNumber")}
+    <button
+        onClick={() => router.push("/suspect1Room")}
         style={{
           position: "absolute",
           bottom: "20px",
-          right: "20px",
+          left: "60px",
           background: "none",
           border: "none",
           fontSize: "2rem",
           color: "white",
           cursor: "pointer",
+          transform: "rotate(180deg)"
         }}
-        aria-label="Next"
+        aria-label="Back"
       >
         ➤
       </button>
-
 
       </div>
     );

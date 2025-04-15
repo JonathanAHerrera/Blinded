@@ -2,37 +2,35 @@
 
 import { useRouter } from "next/navigation";
 
-export default function WhiteCard() {
+export default function talkToSuspect1() {
     const router = useRouter();
-
     return (
       <div style={{
-        backgroundImage: 'url("whiteCardP1.jpg")',
-        backgroundSize: 'contain',
-        backgroundPosition: 'center',
+        backgroundImage: 'url("talkingSuspectOne.jpeg")',
+        backgroundSize: '55%',
         backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
         backgroundColor: 'black',
         height: '100vh',
         width: '100vw',
       }}>
-
+    
       <button
-        onClick={() => router.push("/phoneNumber")}
+        onClick={() => router.push("/redHairSecurityFootage")}
         style={{
           position: "absolute",
           bottom: "20px",
-          right: "20px",
+          right: "60px",
           background: "none",
           border: "none",
           fontSize: "2rem",
           color: "white",
-          cursor: "pointer",
+          cursor: "pointer"
         }}
         aria-label="Next"
       >
         ➤
       </button>
-
 
       </div>
     );
