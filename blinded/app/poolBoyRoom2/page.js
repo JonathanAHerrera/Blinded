@@ -6,11 +6,11 @@ export default function PoolBoyRoom2() {
     const router = useRouter();
 
     const handleSafeBoxClick = () => {
-        router.push("/bookshelf");
+        router.push("/poolBoyBookshelf");
     };
 
     const handleNoteClick = () => {
-        router.push("/cadeLetter");
+        router.push("/poolBoyNote");
     };
 
     const handlePeriodicTableClick = () => {
