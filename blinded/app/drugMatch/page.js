@@ -17,7 +17,7 @@ export default function drugMatch() {
         }}>
 
             <button
-                onClick={() => router.push("/poolBoyRoom2")}  // this needs to be changed to the conclusion
+                onClick={() => router.push("/finalScene")}
                 style={{
                     position: "absolute",
                     bottom: "20px",

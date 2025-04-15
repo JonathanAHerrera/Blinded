@@ -42,6 +42,23 @@ export default function Bookshelf() {
                     e.currentTarget.style.boxShadow = "0 0 0 transparent";
                 }}
             />
+
+            <button
+                onClick={() => router.push("/poolBoyRoom2")}
+                style={{
+                    position: "absolute",
+                    bottom: "20px",
+                    left: "60px",
+                    background: "none",
+                    border: "none",
+                    fontSize: "2rem",
+                    color: "white",
+                    cursor: "pointer",
+                    transform: "rotate(180deg)"
+                }}
+            >
+                ➤
+            </button>
         </div>
     )
 }

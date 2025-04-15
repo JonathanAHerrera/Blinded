@@ -16,16 +16,17 @@ export default function PeriodicTable() {
             width: '100vw',
         }}>
             <button
-                onClick={() => router.push("/poolBoyRoom2")} 
+                onClick={() => router.push("/poolBoyRoom2")}
                 style={{
                     position: "absolute",
                     bottom: "20px",
-                    right: "60px",
+                    left: "60px",
                     background: "none",
                     border: "none",
                     fontSize: "2rem",
                     color: "white",
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    transform: "rotate(180deg)"
                 }}
             >
                 ➤

@@ -53,12 +53,13 @@ export default function poolBoyBookClosed() {
         style={{
           position: "absolute",
           bottom: "20px",
-          right: "60px",
+          left: "60px",
           background: "none",
           border: "none",
           fontSize: "2rem",
           color: "white",
           cursor: "pointer",
+          transform: "rotate(180deg)"
         }}
       >
         ➤
