@@ -10,7 +10,7 @@ export default function PoolBoyRoom2() {
     };
 
     const handleNoteClick = () => {
-        router.push("/note");
+        router.push("/cadeLetter");
     };
 
     const handlePeriodicTableClick = () => {
