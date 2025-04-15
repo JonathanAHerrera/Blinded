@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import ChatbotUI from "@/components/chatbotUI";
 
-const gamepage = () => {
+const GamePage = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
