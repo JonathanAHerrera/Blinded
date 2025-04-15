@@ -23,7 +23,7 @@ export default function Home() {
         <div className="Buttons" style={{ width: "100%", minHeight: "100px", display: "flex", justifyContent: "space-between", alignItems: "center", gap:"20px"}}>
           <button style={{ backgroundColor: "transparent", border:"none" }}>
             {
-              ( audio ) &&  <img src="volume_up.png"/>
+              ( audio ) && <img src="volume_up.png"/>
             
             }
           </button>

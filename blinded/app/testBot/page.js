@@ -2,12 +2,8 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import ChatbotUI from "@/components/chatbotUI";
-// Assume you have some game background component or style
-// import GameScene from '../components/GameScene';
 
-const GamePage = () => {
-  // --- State for messages ---
-  // Initialize with maybe an opening message from the NPC
+const gamepage = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
