@@ -18,7 +18,7 @@ export default function PoolBoyRoom2() {
     };
 
     const handleClosetClick = () => {
-        router.push("/closet");
+        router.push("/poolBoyCloset");
     };
     
     return (
