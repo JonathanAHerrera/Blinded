@@ -1,13 +1,18 @@
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export default function PeriodicTable() {
+export default function poolBoyLockboxOpen() {
     const router = useRouter();
+
+    useEffect(() => {
+        sessionStorage.setItem("bookKey", "true");
+      }, []);
 
     return (
         <div style={{
-            backgroundImage: 'url("periodicTable.png")',
+            backgroundImage: 'url("poolBoyLockboxOpen.png")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -15,6 +20,7 @@ export default function PeriodicTable() {
             height: '100vh',
             width: '100vw',
         }}>
+
             <button
                 onClick={() => router.push("/poolBoyRoom2")} 
                 style={{
@@ -30,7 +36,6 @@ export default function PeriodicTable() {
             >
                 ➤
             </button>
-
         </div>
     )
-}       
+}   

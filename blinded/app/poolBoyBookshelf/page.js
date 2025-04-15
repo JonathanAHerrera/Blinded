@@ -6,7 +6,7 @@ export default function Bookshelf() {
     const router = useRouter();
 
     const handleBookshelfClick = () => {
-        router.push("/bookshelf");
+        router.push("/poolBoyBookClosed");
     };
 
     return (

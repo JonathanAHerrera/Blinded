@@ -2,12 +2,12 @@
 
 import { useRouter } from "next/navigation";
 
-export default function PeriodicTable() {
+export default function drugMatch() {
     const router = useRouter();
 
     return (
         <div style={{
-            backgroundImage: 'url("periodicTable.png")',
+            backgroundImage: 'url("drugMatch.png")',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -15,8 +15,9 @@ export default function PeriodicTable() {
             height: '100vh',
             width: '100vw',
         }}>
+
             <button
-                onClick={() => router.push("/poolBoyRoom2")} 
+                onClick={() => router.push("/poolBoyRoom2")}  // this needs to be changed to the conclusion
                 style={{
                     position: "absolute",
                     bottom: "20px",
@@ -30,7 +31,6 @@ export default function PeriodicTable() {
             >
                 ➤
             </button>
-
         </div>
     )
-}       
+}   
