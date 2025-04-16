@@ -9,6 +9,14 @@ import { useRouter } from "next/navigation";
       "The drug's been flagged by the FBI. It's fast-acting and only ingested. Easy to miss, but nothing too complicated. Probably just some careless mistake. Another drug death, just part of the job.",
       "This looks like a straightforward overdose case. No need to complicate things. Just find where the drug came from, tie up the loose ends, and close it.",
     ],
+    3: [
+      "I checked the police database, and sure enough, there’s a match for that phone number—just a single name attached to it. ‘Gerry Cahns.’ The name doesn’t ring any bells, but it’s something. The database shows he’s listed as a waiter, but the address is unfamiliar.",
+      "I need to ask the captain about this ‘Gerry Cahns.’ Maybe he knows something—if he’s a regular around here, there’s a chance the captain has seen him or heard something. It’s time to find out if this name means more than just a record in the system.",
+    ],
+    5: [
+      "Opening that ledger was a step closer to the truth. Cade Smith’s name, the amounts listed—this wasn’t just a chance meeting. Gerry Cahns is running this drug trade, and Cade was in the middle of it.",
+      "The evidence is clear now, it all leads back to Gerry Cahns. I need to talk to him, figure out exactly what he’s been up to, and why Cade got tangled in this mess.",
+    ],
   };
 
 
