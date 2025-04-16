@@ -24,6 +24,8 @@ export default function CrimeScene() {
         }
 
         sessionStorage.setItem("cipher", cipher);
+        sessionStorage.setItem("key", key);
+        
     }
 
     useEffect(() => {
