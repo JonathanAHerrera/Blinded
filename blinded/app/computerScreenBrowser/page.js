@@ -12,11 +12,15 @@ export default function CrimeScene() {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'black',
+        position: 'relative',
         height: '100vh',
         width: '100vw',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}>
 
-        <iframe className="absolute top-1/2 left-1/2 -translate-1/2 -translate-y-3/4" 
+        <iframe  
             src="https://en.wikipedia.org/wiki/Caesar_cipher" 
             style={{
             backgroundImage: 'url("computerNote.png")',
@@ -25,6 +29,9 @@ export default function CrimeScene() {
             backgroundRepeat: 'no-repeat',
             height: '35vh',
             width: '35vw',
+            position: 'absolute',
+            top: '24%',
+            left: '32.5%',
         }}>
         </iframe>
 

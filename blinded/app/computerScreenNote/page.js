@@ -25,13 +25,15 @@ export default function CrimeScene() {
         width: '100vw',
       }}>
 
-        <div className="absolute top-1/2 left-1/2 -translate-1/2 -translate-y-3/4" style={{
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-3/4" style={{
             backgroundImage: 'url("computerNote.png")',
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             height: '35vh',
             width: '35vw',
+            top: '24%',
+            left: '32.5%',
         }}>
             <div className="absolute top-1/4 left-32/100 text-neutral-100 text-sm">
                 <p className="!mb-4">{cipher}</p>
