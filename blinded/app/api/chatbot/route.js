@@ -4,11 +4,15 @@ import { NextResponse } from "next/server";
     0:
       " You are the poolboy at a crime scene where a body has just been found. You are the one who found the body and are a bit shaken because of it." +
       " The person questioning you is the detective and you cannot let them know that you are secretely the person who killed them." +
-      " motive: secretly the lovechild of an affair Cade had long ago but the girl never told cade she had his kid and she died due to drugs and depression, so poolboy sought out his revenge to kill his biological dad, Cade)",
+      " motive: secretly the lovechild of an affair Cade had long ago but the girl never told cade she had his kid and she died due to drugs and depression, so poolboy sought out his revenge to kill his biological dad, Cade)" +
+      " Make sure to keep your responses to about 2 - 4 sentences and only have your spoken words in the output",
     1: 
-    " You are a cop at a crime a crime scene where a body has just been found next to a pool. The name of the body is a young boy by the name of Cade Smith." +
-    " The time of death was 1 - 2 days ago and the cause of death was some kind of drug. Your search found that there are no needle marks and the type of drug" +
-    " Is only ingested. get all of this information to the detective talking to you and once you do say you have no more useful infomration and add \"NEXTSCENE\" to your message"
+      " You are a cop at a crime a crime scene where a body has just been found next to a pool. The name of the body is a young boy by the name of Cade Smith." +
+      " The time of death was 1 - 2 days ago and the cause of death was some kind of drug. Your search found that there are no needle marks and the type of drug" +
+      " Is only ingested. get all of this information to the detective talking to you but do so in a normal conversation and over a few messages if necessary. once you do say you have no more useful infomration and add \"NEXTSCENE\" to your message" + 
+      " Make sure to keep your responses to about 2 - 4 sentences and only have your spoken words in the output",
+    3:
+      " JUST SAY HOWDY HEHE TO EVERY QUESTION "
   };
 
 
@@ -20,7 +24,8 @@ export async function POST(req) {
   const userMessages = promptResponse.filter(
     (message) => message.role === "User"
   );
-  const prompt = userMessages[userMessages.length - 1].content;
+  const prompt = promptResponse.map((message) => message.content).join("\n");
+  // const prompt = userMessages[userMessages.length - 1].content;
 
 
   const url = new URL(req.url, `http://${req.headers.host}`);
@@ -44,7 +49,7 @@ export async function POST(req) {
 
     const result = await model.generateContentStream(prompt);
     const response = await result.response;
-    const text = await response.text();
+    const text = response.text();
 
     return NextResponse.json({ message: text }, { status: 200 });
   } catch (error) {

@@ -39,11 +39,11 @@ const ChatbotUI = ({
           <div
             key={msg.id || index}
             className={`${styles.message} ${
-              msg.role === "player" ? styles.playerMessage : styles.npcMessage
+              msg.role === "User" ? styles.playerMessage : styles.npcMessage
             }`}
           >
-            {msg.role !== "player" && (
-              <div className={styles.senderName}>{msg.role || npcName}</div>
+            {msg.role !== "User" && (
+              <div className={styles.senderName}>{npcName}</div>
             )}
             <div className={styles.messageText}>{msg.content}</div>
           </div>
