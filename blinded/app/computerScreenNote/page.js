@@ -6,11 +6,14 @@ import { useRouter } from "next/navigation";
 export default function CrimeScene() {
     const router = useRouter();
     const [cipher, setCipher] = useState("");
+    const [key, setKey] = useState("");
 
     useEffect(() => {
         const storedCipher = sessionStorage.getItem("cipher");
-        if (storedCipher) {
+        const storedKey = sessionStorage.getItem("key");
+        if (storedCipher && storedKey) {
           setCipher(storedCipher);
+          setKey(storedKey);
         }
       }, []);
 
@@ -38,6 +41,7 @@ export default function CrimeScene() {
             <div className="absolute top-1/4 left-32/100 text-neutral-100 text-sm">
                 <p className="!mb-4">{cipher}</p>
                 <p className="text-[0.65rem]">This needs to be more secure<br></br> for now its just a caesar cipher</p>
+                <p className="text-[0.65rem]">Key: {key}</p>
             </div>
         </div>
 
