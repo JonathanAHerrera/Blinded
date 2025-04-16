@@ -28,7 +28,7 @@ export default function CrimeScene() {
         </div>
 
         <button
-            onClick={() => router.push("/")} // TODO -> PUZZLE 4
+            onClick={() => router.push("/poolBoyRoom2")} 
             style={{
             position: "absolute",
             bottom: "20px",
