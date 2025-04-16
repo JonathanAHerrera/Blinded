@@ -11,9 +11,12 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.4",
     "autoprefixer": "^10.4.21",
+    "@ai-sdk/google": "^1.2.11",
     "@google/genai": "^0.8.0",
-    "next": "15.2.3",
+    "@google/generative-ai": "^0.24.0",
     "@tailwindcss/postcss": "^4.1.4",
+    "ai": "^4.3.7",
+    "next": "15.2.3",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

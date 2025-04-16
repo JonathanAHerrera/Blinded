@@ -1,0 +1,67 @@
+@keyframes floatUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Start lower */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* End at original position */
+  }
+}
+
+.thoughtContainer {
+  position: fixed; /* Fixed positioning to float over everything */
+  top: 30%; /* Position vertically (adjust as needed) */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: auto; /* Fit content width */
+  max-width: 80%; /* Prevent it being excessively wide */
+  z-index: 200; /* High z-index to be on top */
+  pointer-events: none; /* Allow clicks to pass through */
+  opacity: 0; /* Start invisible */
+
+  /* No background, no border */
+  display: flex; /* Use flex for multi-line centering */
+  flex-direction: column;
+  align-items: center;
+}
+
+.thoughtText {
+  font-family: 'Libre Baskerville', serif; /* Your noir font */
+  font-style: italic;
+  font-size: 1.5em; /* Adjust size as needed */
+  color: #f0f0f0; /* Off-white */
+  text-align: center;
+  margin: 0 0 5px 0; /* Small margin between lines if multi-line */
+  padding: 0;
+  /* CRUCIAL for readability over images */
+  text-shadow:
+     0px 0px 5px rgba(0, 0, 0, 0.9), /* Soft inner shadow */
+     0px 0px 8px rgba(0, 0, 0, 0.8), /* Wider outer shadow */
+     1px 1px 2px rgba(0, 0, 0, 0.7); /* Slight offset shadow for definition */
+
+  /* Animation is applied via class change, not directly */
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start lower */
+}
+
+/* --- Animation Control Classes --- */
+
+/* Class added to trigger fade-in and float-up */
+.visible {
+  opacity: 1; /* Container becomes visible */
+  transition: opacity 0.5s ease-in; /* Fade in container */
+}
+.visible .thoughtText {
+   /* Apply animation to text when container is visible */
+  animation: floatUpFadeIn 0.8s ease-out forwards;
+   /* `forwards` keeps the end state of the animation */
+}
+
+/* Class added to trigger fade-out */
+.fadingOut {
+  opacity: 0; /* Fade out container */
+  transition: opacity 0.5s ease-out; /* Fade out duration */
+}
+/* Optional: you could add a fade-out animation to .fadingOut .thoughtText if needed,
+   but fading the container often looks smoother */

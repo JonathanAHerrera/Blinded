@@ -1,0 +1,105 @@
+
+'use client'
+import React, { useState, useEffect } from "react";
+
+import { useRouter } from "next/navigation";
+import ChatbotUI from "@/components/chatbotUI";
+
+
+
+
+  const Name = {
+    0: "Pool Boy",
+    1: "Cop",
+    2: "idkYet",
+  };
+
+
+const GamePage = () => {
+  const router = useRouter();
+  const [messages, setMessages] = useState([
+    { role: 'Bot',
+      content: 'H-hi Detective I-I found the body like this'}
+  ]) 
+  const [currentNpcName, setCurrentNpcName] = useState("Pool Boy")
+  const [currLevel, setCurrLevel] = useState(0)
+
+  useEffect( () => {
+    setCurrentNpcName( Name[ currLevel ] )
+    const currLevelTemp = localStorage.getItem('currLevel')
+    console.log("local", currLevelTemp)
+    if ( currLevelTemp !== null && currLevelTemp !== "1" ){
+      console.log(" we setting it")
+      setCurrLevel( parseInt( currLevelTemp ) )
+    }
+
+  }, [ currLevel ])
+
+  const handleSendMessage = async ( currMessage ) => {
+    let isNext = false;
+    setMessages((messages) => [...messages, {role:'User', content: currMessage}])
+    try{
+      const response = await fetch(`api/chatbot?level=${currLevel}`,{
+        method: 'POST',
+        headers: {'Content-Type' :  'application/json'},
+        body: JSON.stringify([...messages, {role:'User', content: currMessage}])
+      })
+      const data = await response.json()
+      let message = data.message
+      if (message.includes("NEXTSCENE") ){
+        isNext = true;
+        message = message.replace("NEXTSCENE", "");
+      }
+      setMessages((messages) => [...messages, {role:'Bot', content: message}])
+      if (isNext && currLevel == 0) {
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        setMessages([{ role: "Bot", content: "Hey detective another brutal one today... what would you like to know?" }]);
+        setCurrLevel( currLevel + 1 );
+      } else if (isNext && currLevel == 1) {
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        setCurrLevel( currLevel + 1 );
+        console.log("SET")
+        localStorage.setItem( "currLevel", currLevel )
+        router.push("/thoughts")
+      }
+    } catch ( error ){
+      console.error( "ERROR", error )
+    }
+  }
+
+    // const newAiMessage = {
+    //   id: Date.now() + "-npc", // Simple unique ID
+    //   sender: currentNpcName, // Use the current NPC's name
+    //   text: aiResponseText,
+    // };
+  useEffect( () => {
+
+  }, [currLevel])
+
+  return (
+    <div>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: "url(askPoolBoy.jpeg)",
+          backgroundSize: "cover",
+          zIndex: -1, 
+        }}
+      ></div>
+
+      {/* Chatbot UI Layered on top */}
+      <ChatbotUI
+        messages={messages}
+        onSendMessage={handleSendMessage}
+        npcName={currentNpcName}
+      />
+
+    </div>
+  );
+};
+
+export default GamePage;
