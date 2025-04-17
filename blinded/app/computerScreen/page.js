@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function CrimeScene() {
 
@@ -47,6 +48,8 @@ export default function CrimeScene() {
         height: '100vh',
         width: '100vw',
       }}>
+
+         <ExitButton></ExitButton>
         <div className="transition hover:scale-120 hover:drop-shadow-[#FF0]/60 drop-shadow-[#FF0]/30 drop-shadow-lg" 
             onClick={() => router.push("/computerScreenNote")} 
             style={{

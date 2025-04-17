@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function CrimeScene() {
     const router = useRouter();
@@ -27,6 +28,8 @@ export default function CrimeScene() {
         height: '100vh',
         width: '100vw',
       }}>
+
+        <ExitButton></ExitButton>
 
         <div className="absolute top-1/2 left-1/2 -translate-1/2 -translate-y-3/4" style={{
             backgroundImage: 'url("computerNote.png")',

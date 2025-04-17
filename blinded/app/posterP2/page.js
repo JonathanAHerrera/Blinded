@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function posterP2() {
     const router = useRouter();
@@ -14,6 +15,8 @@ export default function posterP2() {
         height: '100vh',
         width: '100vw',
       }}>
+
+        <ExitButton></ExitButton>        
 
     <button
         onClick={() => router.push("/suspect1Room")}

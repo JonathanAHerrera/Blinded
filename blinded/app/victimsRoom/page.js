@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function VictimsRoom() {
   const router = useRouter();
@@ -26,6 +27,9 @@ export default function VictimsRoom() {
         position: "relative",
       }}
     >
+
+        <ExitButton></ExitButton>
+
       <button
         onClick={handleSafeBoxClick}
         style={{

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function PeriodicTable() {
     const router = useRouter();
@@ -15,6 +16,9 @@ export default function PeriodicTable() {
             height: '100vh',
             width: '100vw',
         }}>
+
+        <ExitButton></ExitButton>
+
             <button
                 onClick={() => router.push("/poolBoyRoom2")}
                 style={{

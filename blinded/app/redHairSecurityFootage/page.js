@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function RedHairSecurityFootage() {
     const router = useRouter();
@@ -14,6 +15,8 @@ export default function RedHairSecurityFootage() {
         height: '100vh',
         width: '100vw',
       }}>
+
+        <ExitButton></ExitButton>
 
       <button
         onClick={() => router.push("/askRedHairedGirl")}

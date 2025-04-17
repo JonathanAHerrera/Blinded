@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function poolBoyRoom() {
     const router = useRouter();
@@ -20,6 +21,8 @@ export default function poolBoyRoom() {
         height: '100vh',
         width: '100vw',
       }}>
+    
+        <ExitButton></ExitButton>
     
         <button
             onClick={handleSafeBoxClick}

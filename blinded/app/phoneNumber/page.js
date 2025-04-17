@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import ExitButton from "../components/exitBtn";
 
 
 export default function PhoneNumber() {
@@ -29,6 +30,9 @@ export default function PhoneNumber() {
           position: 'relative',
         }}
       >
+
+        <ExitButton></ExitButton>
+
         <div
           style={{
             position: 'absolute',

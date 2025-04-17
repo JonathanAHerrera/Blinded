@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function CrimeScene() {
 
@@ -16,6 +17,8 @@ export default function CrimeScene() {
         height: '100vh',
         width: '100vw',
       }}>
+
+        <ExitButton></ExitButton>
 
         <div className="absolute top-1/2 left-1/2 -translate-1/2 -translate-y-1/2" style={{
             backgroundImage: 'url("DNAFile.png")',

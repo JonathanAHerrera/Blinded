@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function openLedgerBoxP2() {
     const router = useRouter();
@@ -16,6 +17,9 @@ export default function openLedgerBoxP2() {
         alignItems: "center",
       }}
     >
+
+        <ExitButton></ExitButton>
+
       <div
         style={{
           width: "55vw",

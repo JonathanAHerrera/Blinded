@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import ExitButton from "../components/exitBtn";
 
 // Style constant for keypad buttons based on SafeBox
 const buttonStyle = {
@@ -55,6 +56,8 @@ export default function PoolBoyLockbox() {
             width: '100vw',
             position: 'relative'
         }}>
+
+            <ExitButton></ExitButton>
             {/* Pin Display */}
             <div style={{
                 position: 'absolute',

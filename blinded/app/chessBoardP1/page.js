@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
+import ExitButton from '../components/exitBtn';
 
 
 export default function ChessBoard() {
@@ -30,6 +31,9 @@ export default function ChessBoard() {
         alignItems: "center",
       }}
     >
+
+        <ExitButton></ExitButton>
+        
       <div
         style={{
           position: 'relative',

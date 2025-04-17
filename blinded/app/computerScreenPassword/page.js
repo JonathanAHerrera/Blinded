@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function CrimeScene() {
 
@@ -37,6 +38,8 @@ export default function CrimeScene() {
         height: '100vh',
         width: '100vw',
       }}>
+
+        <ExitButton></ExitButton>
 
         <form
             onSubmit={handleSubmit}
