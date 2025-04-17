@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function LedgerP2() {
     const router = useRouter();
@@ -16,6 +17,8 @@ export default function LedgerP2() {
         alignItems: "center",
       }}
     >
+
+        <ExitButton></ExitButton>
       <div
         style={{
           width: "55vw",

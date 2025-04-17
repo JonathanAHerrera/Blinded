@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function suspectOneRoom() {
     const router = useRouter();
@@ -24,6 +25,9 @@ export default function suspectOneRoom() {
         alignItems: "center",
       }}
     >
+
+        <ExitButton></ExitButton>
+
       <div
         style={{
           width: "55vw", // Image scales with screen

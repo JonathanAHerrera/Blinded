@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function PoolBoyCloset() {
     const router = useRouter();
@@ -19,6 +20,8 @@ export default function PoolBoyCloset() {
             height: '100vh',
             width: '100vw',
         }}>
+
+            <ExitButton></ExitButton>
             <button
                 onClick={handleLockboxClick}
                 style={{

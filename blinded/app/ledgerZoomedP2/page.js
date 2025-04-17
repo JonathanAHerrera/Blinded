@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function LedgerZoomedP2() {
   const [digits, setDigits] = useState([0, 0, 0]);
@@ -53,6 +54,9 @@ export default function LedgerZoomedP2() {
         position: "relative",
       }}
     >
+
+        <ExitButton></ExitButton>
+
       <div style={styles.container}>
         {digits.map((shapeIndex, index) => (
           <div

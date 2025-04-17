@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function askPoolBoy() {
     const router = useRouter();
@@ -16,6 +17,7 @@ export default function askPoolBoy() {
         width: '100vw',
       }}>
 
+        <ExitButton></ExitButton>
               
       <button
         onClick={() => router.push("/victimsRoom")}

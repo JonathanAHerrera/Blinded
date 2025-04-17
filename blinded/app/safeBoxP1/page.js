@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 
 export default function SafeBox() {
@@ -54,6 +55,8 @@ export default function SafeBox() {
         position: "relative",
       }}
     >
+
+        <ExitButton></ExitButton>
 
     <div
         style={{
