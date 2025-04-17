@@ -38,6 +38,8 @@ export default function CrimeScene() {
             backgroundRepeat: 'no-repeat',
             height: '35vh',
             width: '35vw',
+            top: '24%',
+            left: '32.5%',
         }}>
             <div className="absolute top-1/4 left-32/100 text-neutral-100 text-sm">
                 <p className="!mb-4">{cipher}</p>
