@@ -56,7 +56,7 @@ export default function PhoneNumber() {
         </div>
         
         <button
-        onClick={() => router.push("/suspect1Room")}
+        onClick={() => router.push("/cruiseCaptain")}
         style={{
           position: "absolute",
           bottom: "20px",
