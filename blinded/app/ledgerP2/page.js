@@ -51,7 +51,10 @@ export default function LedgerP2() {
       </button>
 
       <button
-        onClick={() => router.push("/talkToSuspect1")}
+        onClick={() =>  {         
+          localStorage.setItem( 'currLevel', 5 )
+          router.push("/thoughts")
+        }}
         style={{
           position: "fixed",
           bottom: "3vh",

@@ -74,12 +74,12 @@ export default function PoolBoyLockbox() {
             {/* Number Pad */}
             <div style={{
                 position: 'absolute',
-                top: '65%',
-                left: '50%',
+                top: '66%',
+                left: '48%',
                 transform: 'translate(0%, -50%)',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '80px',
+                gap: '20px',
                 backgroundColor: 'transparent',
                 padding: '40px',
                 borderRadius: '15px'

@@ -11,7 +11,7 @@ export default function Home() {
   const router = useRouter();
 
   const handleStartClick = () => {
-    router.push("/crimeScene");
+    router.push("/chat");
   };
 
   const [ audio, setAudio ] = useState( true )

@@ -17,7 +17,10 @@ export default function drugMatch() {
         }}>
 
             <button
-                onClick={() => router.push("/finalScene")}
+                onClick={() => {
+                    router.push("/thoughts")
+                }
+            }
                 style={{
                     position: "absolute",
                     bottom: "20px",
