@@ -3,6 +3,20 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+// Style constant for keypad buttons based on SafeBox
+const buttonStyle = {
+    backgroundColor: "black",
+    color: "white",
+    width: "55px",
+    height: "38px",
+    border: "1px solid white",
+    fontSize: "20px",
+    cursor: "pointer",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+};
+
 export default function PoolBoyLockbox() {
     const router = useRouter();
     const [enteredCode, setEnteredCode] = useState("");
@@ -44,64 +58,52 @@ export default function PoolBoyLockbox() {
             {/* Pin Display */}
             <div style={{
                 position: 'absolute',
-                top: '45%',
-                left: '50%',
-                transform: 'translate(-20%, -130%)',
+                top: '48%',
+                left: '49%',
+                transform: 'translate(-19%, -132%)',
                 display: 'flex',
-                gap: '55px',
+                gap: '14px',
                 backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                padding: '25px',
-                borderRadius: '15px'
+                padding: '20px',
+                borderRadius: '8px'
             }}>
                 {Array(8).fill(0).map((_, index) => (
                     <div key={index} style={{
                         width: '50px',
-                        height: '60px',
-                        backgroundColor: 'white',
-                        border: error ? '2px solid red' : '1px solid gray',
-                        borderRadius: '8px',
+                        height: '50px',
+                        backgroundColor: '#222',
+                        border: error ? '2px solid red' : '2px solid white',
+                        borderRadius: '0px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: '2rem',
-                        color: 'black'
+                        fontSize: '48px',
+                        color: 'white'
                     }}>
                         {enteredCode[index] || ''}
                     </div>
                 ))}
             </div>
 
-            {/* Number Pad */}
+            {/* Number Pad - Styled like SafeBox Keypad */}
             <div style={{
                 position: 'absolute',
-                top: '65%',
-                left: '50%',
-                transform: 'translate(0%, -50%)',
+                top: '60%',
+                left: '59%',
+                transform: 'translate(-49%, -50%)',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '80px',
-                backgroundColor: 'transparent',
-                padding: '40px',
-                borderRadius: '15px'
+                gridTemplateColumns: 'repeat(3, 60px)',
+                gap: '16px',
+                backgroundColor: 'black',
+                padding: '20px',
+                borderRadius: '5px',
+                zIndex: 10
             }}>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((digit) => (
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((digit) => (
                     <button
                         key={digit}
                         onClick={() => handleDigitClick(digit.toString())}
-                        style={{
-                            width: '60px',
-                            height: '60px',
-                            borderRadius: '50%',
-                            backgroundColor: 'transparent',
-                            border: 'none',
-                            cursor: 'pointer',
-                            fontSize: '3rem',
-                            color: 'transparent',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            transition: 'transform 0.1s ease',
-                        }}
+                        style={buttonStyle}
                         onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
                         onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
                         onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
@@ -112,17 +114,10 @@ export default function PoolBoyLockbox() {
                 <button
                     onClick={handleClear}
                     style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        backgroundColor: 'red',
-                        border: 'none',
-                        cursor: 'pointer',
-                        fontSize: '1.8rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'transform 0.1s ease',
+                        ...buttonStyle,
+                        gridColumn: '1',
+                        backgroundColor: 'darkred',
+                        color: 'white'
                     }}
                     onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
                     onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
@@ -131,19 +126,28 @@ export default function PoolBoyLockbox() {
                     C
                 </button>
                 <button
-                    onClick={handleSubmit}
+                    key={0}
+                    onClick={() => handleDigitClick('0')}
                     style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        backgroundColor: 'green',
-                        border: 'none',
-                        cursor: 'pointer',
-                        fontSize: '1.8rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'transform 0.1s ease',
+                        ...buttonStyle,
+                        gridColumn: '2',
+                    }}
+                    onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
+                    onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                    0
+                </button>
+                <button
+                    onClick={handleSubmit}
+                    disabled={enteredCode.length !== 8}
+                    style={{
+                        ...buttonStyle,
+                        gridColumn: '3',
+                        backgroundColor: 'darkgreen',
+                        color: 'white',
+                        opacity: enteredCode.length === 8 ? 1 : 0.4,
+                        transition: "opacity 0.3s"
                     }}
                     onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
                     onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
