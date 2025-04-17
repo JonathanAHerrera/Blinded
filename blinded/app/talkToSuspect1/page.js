@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function talkToSuspect1() {
     const router = useRouter();
@@ -15,6 +16,9 @@ export default function talkToSuspect1() {
         width: '100vw',
       }}>
     
+
+        <ExitButton></ExitButton>
+
       <button
         onClick={() => router.push("/redHairSecurityFootage")}
         style={{

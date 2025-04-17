@@ -1,29 +1,31 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function CrimeScene() {
     const router = useRouter();
 
     return (
-      <div
-        style={{
-          backgroundImage: 'url("computerScreen.jpg")',
-          backgroundSize: "90%",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: "black",
-          position: "relative",
-          height: "100vh",
-          width: "100vw",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <iframe
-          src="https://en.wikipedia.org/wiki/Caesar_cipher"
-          style={{
+      <div style={{
+        backgroundImage: 'url("computerScreen.jpg")',
+        backgroundSize: '90%',
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundColor: "black",
+        position: "relative",
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
+
+        <ExitButton></ExitButton>
+
+        <iframe className="absolute top-1/2 left-1/2 -translate-1/2 -translate-y-3/4" 
+            src="https://en.wikipedia.org/wiki/Caesar_cipher" 
+            style={{
             backgroundImage: 'url("computerNote.png")',
             backgroundSize: "contain",
             backgroundPosition: "center",

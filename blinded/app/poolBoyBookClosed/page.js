@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import ExitButton from "../components/exitBtn";
 
 export default function poolBoyBookClosed() {
   const router = useRouter();
@@ -26,6 +27,8 @@ export default function poolBoyBookClosed() {
         width: "100vw",
       }}
     >
+
+        <ExitButton></ExitButton>
       <button
         onClick={handleBookClick}
         style={{
