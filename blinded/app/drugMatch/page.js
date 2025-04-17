@@ -20,7 +20,10 @@ export default function drugMatch() {
         <ExitButton></ExitButton>
 
             <button
-                onClick={() => router.push("/finalScene")}
+                onClick={() => {
+                    router.push("/thoughts")
+                }
+            }
                 style={{
                     position: "absolute",
                     bottom: "20px",

@@ -91,16 +91,15 @@ export default function PoolBoyLockbox() {
             {/* Number Pad - Styled like SafeBox Keypad */}
             <div style={{
                 position: 'absolute',
-                top: '60%',
-                left: '59%',
-                transform: 'translate(-49%, -50%)',
+                top: '66%',
+                left: '48%',
+                transform: 'translate(0%, -50%)',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 60px)',
-                gap: '16px',
-                backgroundColor: 'black',
-                padding: '20px',
-                borderRadius: '5px',
-                zIndex: 10
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '20px',
+                backgroundColor: 'transparent',
+                padding: '40px',
+                borderRadius: '15px'
             }}>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((digit) => (
                     <button

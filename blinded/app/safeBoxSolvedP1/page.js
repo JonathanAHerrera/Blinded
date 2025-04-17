@@ -20,7 +20,11 @@ export default function WhiteCard() {
         <ExitButton></ExitButton>
 
       <button
-        onClick={() => router.push("/phoneNumber")}
+        onClick={() => {
+          localStorage.setItem( 'currLevel', 3 )
+          router.push("/thoughts")
+        }
+        }
         style={{
           position: "absolute",
           bottom: "20px",
