@@ -22,7 +22,7 @@ import next from "next";
   const image = {
     0: 'url("crimeScene.jpg")',
     1: 'url("askPoolBoy.jpeg")',
-    4: 'url("cruiseCaptain.jepg")',
+    4: 'url("cruiseCaptain.jpeg")',
     6: 'url("talkingSuspectOne.jpeg")',
     7: 'url("askRedHairedGirl.jpeg")',
     8: 'url("askRichardTheBoyFriend.jpeg")'

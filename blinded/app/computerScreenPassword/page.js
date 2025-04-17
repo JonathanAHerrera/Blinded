@@ -47,6 +47,9 @@ export default function CrimeScene() {
             style={{
             height: "30vh",
             width: "20vw",
+            top: '28%',
+            left: '40%',
+            position: 'absolute',
             }}
         >
             <h2>DNA-File.pdf</h2>

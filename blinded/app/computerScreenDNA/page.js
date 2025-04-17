@@ -14,8 +14,12 @@ export default function CrimeScene() {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'black',
+        position: "relative",
         height: '100vh',
         width: '100vw',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}>
 
         <ExitButton></ExitButton>
@@ -27,6 +31,9 @@ export default function CrimeScene() {
             backgroundRepeat: 'no-repeat',
             height: '90vh',
             width: '70vw',
+            top: '5%',
+            left: '15%',
+            position: 'absolute',
         }}>
         </div>
 

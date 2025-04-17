@@ -23,7 +23,9 @@ export default function CrimeScene() {
 
         <ExitButton></ExitButton>
 
-        <iframe className="absolute top-1/2 left-1/2 -translate-1/2 -translate-y-3/4" 
+        <ExitButton></ExitButton>
+
+      <iframe className="absolute top-1/2 left-1/2 -translate-1/2 -translate-y-3/4" 
             src="https://en.wikipedia.org/wiki/Caesar_cipher" 
             style={{
             backgroundImage: 'url("computerNote.png")',

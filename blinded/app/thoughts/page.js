@@ -103,6 +103,9 @@ const GameScene = () => {
     } else if (currIndex >= thoughtList.length && currLevel === 9 ){
       localStorage.setItem( 'currLevel', currLevel + 1 )
       router.push("/poolBoyRoom2");
+    } else if (currIndex >= thoughtList.length && currLevel === 10 ){
+      localStorage.setItem( 'currLevel', currLevel + 1 )
+      router.push("/finalScene");
     }
     triggerThought( thoughtList[ currIndex ], 10000)
     
